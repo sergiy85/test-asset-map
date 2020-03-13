@@ -1,0 +1,24 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.label-modal{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.label-descr{
+  display: block;
+  width: 30%;
+}
+.btn-cancel{
+  color: #fff;
+}
+
+input.ng-touched.ng-invalid {
+  border:1px solid #dc3545;
+}
+
+input.ng-touched.ng-valid {
+  border: 1px solid #28a745;
+}

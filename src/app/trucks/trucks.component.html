@@ -1,0 +1,46 @@
+<div class="control-wrap navbar-brand">
+  <button 
+    type="submit" 
+    class="btn btn-success btn-add" 
+    data-toggle="modal" 
+    data-target="#addAsset"
+    (click) = "sendData(trucks)">
+    Add Asset
+  </button>
+  <input 
+    type="text" 
+    class="form-control" 
+    name="search" 
+    [(ngModel)]='searchText' 
+    autocomplete="off" 
+    placeholder="Search...">
+</div>
+<div class="marker-wrap">
+  <div class="marker-title-wrap">
+    <h3 class="title">Assets</h3>
+  </div>
+  <ul class="marker-list">
+    <li 
+      class="marker-item" 
+      *ngFor = "let truck of trucks | filter:searchText">
+      <a 
+        class="marker-link"
+        (click)="sendData(truck)"
+        href="#">
+        {{ truck.label }}
+      </a>
+      <button 
+        class="btn btn-light"
+        data-toggle="modal" 
+        data-target="#removeAsset"
+        (click)="sendData(truck)">
+        <span class="close-btn-sp"></span>
+      </button>
+    </li>
+  </ul>
+</div> 
+
+<!-- Modal windows -->
+<app-add-asset></app-add-asset>
+
+<app-delete-asset></app-delete-asset>

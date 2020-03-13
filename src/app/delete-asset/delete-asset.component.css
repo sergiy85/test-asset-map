@@ -1,0 +1,9 @@
+.header-flex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.warn-title{
+  display: block;
+  width: 50%;
+}

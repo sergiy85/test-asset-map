@@ -1,0 +1,32 @@
+:host{
+  width: 60%;
+}
+agm-map {
+  height: 75vh;
+  width: 100%;
+}
+
+.map-wrap{
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #eee;
+}
+.main-titles{
+  padding-left: 15px;
+  font-size: 28px;
+}
+.title{
+  font-size: 18px;
+  padding: 10px 12px;
+  margin: 0;
+}
+.infoWindowContent {
+  font-size:  12px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+@media (max-width: 651px){
+  :host{
+    width: 100%;
+  }
+}

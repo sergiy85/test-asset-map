@@ -1,0 +1,103 @@
+/* Assets */
+:host{
+  width: 35%;
+}
+.title{
+  font-size: 18px;
+  padding: 10px 12px;
+  margin: 0;
+}
+.control-wrap{
+  display: flex;
+  margin: .5rem;
+}
+.btn-add{
+  width: 50%;
+  margin-right: 10px;
+}
+.marker-wrap{
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+.marker-title-wrap{
+    background-color: #eee;
+    padding: 1px;
+}
+
+.marker-list{
+    list-style-type: none;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 75vh;
+}
+.marker-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    border-top: 1px solid #ccc;
+}
+.marker-item:last-child{
+    border-bottom: 1px solid #ccc;
+}
+
+.marker-link{
+    color: #000;
+    text-decoration: none;
+    padding-left: 15px;
+}
+
+/* Buttons */
+
+.btn-light{
+    border:none;
+    background-color: #fff;
+    position: relative;
+    padding: 24px;
+    font-size: x-large;
+}
+
+.btn-light:hover{
+    opacity: 0.5;
+}
+
+/* 
+** "Close" 
+*/
+
+.close-btn-sp {
+    position: absolute;
+    right: 24px;
+    top: 12px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+}
+    
+.close-btn-sp::before, 
+.close-btn-sp::after {
+    position: absolute;
+    left: 17px;
+    top: -2px;
+    content: ' ';
+    height: 31px;
+    width: 2px;
+    background-color: #fc4242;
+}
+.close-btn-sp::before {
+    transform: rotate(45deg);
+}
+.close-btn-sp::after {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 651px){
+  :host{
+    width: 100%;
+  }
+}

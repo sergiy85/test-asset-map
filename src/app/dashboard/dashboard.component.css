@@ -1,0 +1,50 @@
+/*
+** ========= Adjustment settings ====================
+*/
+
+*{
+  box-sizing: border-box;
+}
+body{
+  position: relative;
+  font-size: 20px;
+  color: rgb(51,51,51);
+}
+
+/* ================ ../Adjustments ============= */
+
+/* ============== Layout ========================== */
+/*
+** Navbar
+*/
+
+.navbar{
+  border: none !important;
+  background: #fff; 
+}
+.title{
+  font-size: 36px;
+  color: rgb(51,51,51)!important;
+}
+
+/*
+** Main
+*/
+
+.main-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* 
+** ================== Media ==============
+*/ 
+
+@media (max-width: 651px){
+  .main-content{
+    flex-direction: column;
+  }
+}
