@@ -10,9 +10,13 @@
       [latitude]='marker.lat'
       [longitude]='marker.lng'
       [opacity]='marker.alpha'
+      [visible] = 'marker.visible'
       [openInfoWindow]='marker.openInfoWindow'
       [markerDraggable]='false'>
-      <agm-info-window [disableAutoPan]="true" [isOpen]="false">
+      <agm-info-window 
+        [disableAutoPan]="false" 
+        [isOpen]="true" 
+        *ngIf = 'marker.visible'>
         <strong>{{ marker.label }}</strong>
       </agm-info-window>
     </agm-marker>

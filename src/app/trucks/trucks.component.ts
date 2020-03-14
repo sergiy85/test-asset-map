@@ -34,7 +34,7 @@ export class TrucksComponent implements OnInit {
   public sendData(value): void {
     this.share.sendData(value);
   }
-
+  
   public deleteTruck(){
     this.subscriptionDeleteTruck = this.share.getDeleteTruck()
       .subscribe(data => { 

@@ -31,7 +31,8 @@ export class AgmMapComponent implements OnInit{
       lat: null,
       lng: null,
       label: null,
-      alpha: null,
+      alpha: 1,
+      visible: false,
       openInfoWindow: false
     };
     this.markers = [];
@@ -40,14 +41,20 @@ export class AgmMapComponent implements OnInit{
   ngOnInit() {
     // Create markers from the list of the trucks
     this.createMarkers();
-    // set the marker according selected truck 
-    this.setMarker();
     // Get new truck from Add-Asset Component
     this.addNewAsset();
+    // set the marker according selected truck 
+    this.setMarker();
       // remove marker 
     this.deleteMarker();
   }
 
+  // Check on number
+  public isNumber(value:any):boolean {
+    return !Number.isNaN(Number(value))
+  };
+
+  // Methods
   public createMarkers(){
     this.truckService.getTrucks()
       .subscribe(trucks => {
@@ -56,7 +63,7 @@ export class AgmMapComponent implements OnInit{
             lat: truck.lat,
             lng: truck.lng,
             label: truck.label,
-            alpha: 0
+            visible: false
           };
           this.markers.push(this.marker);
         }
@@ -66,26 +73,37 @@ export class AgmMapComponent implements OnInit{
 
   public setMarker(){
     this.subscriptionAlpha = this.share.getData()
-      .subscribe(data => { 
+      .subscribe(data => {
+        if(!this.isNumber(data.lat) && !this.isNumber(data.lng)){
+          data.lat = Number(data.lat);
+          data.lng = Number(data.lng);
+        } 
         for(let marker of this.markers){
           if(marker.lat === data.lat && marker.lng === data.lng){
-            marker.alpha = 1;
+            marker.visible = true;
             marker.openInfoWindow = true;
+          }
+          else{
+            marker.visible = false;
           }
         }
       });
-    return this.markers;  
+    return this.markers;
   }
 
   public addNewAsset(){
     this.subscriptionAddAsset = this.share.getNewTruck()
-      .subscribe(truck => { 
+      .subscribe(data => {
+        if(!this.isNumber(data.lat) && !this.isNumber(data.lng)){
+          data.lat = Number(data.lat);
+          data.lng = Number(data.lng);
+        }
         this.marker = {
-          lat: +truck.lat,
-          lng: +truck.lng,
-          label: truck.label,
-          alpha: 1,
-          openInfoWindow:true
+          lat: data.lat,
+          lng: data.lng,
+          label: data.label,
+          visible: true,
+          openInfoWindow: true
         };
         this.markers.push(this.marker);
       });
@@ -95,9 +113,12 @@ export class AgmMapComponent implements OnInit{
   public deleteMarker(){
     this.subscriptionDeleteMarker = this.share.getDeleteTruck()
       .subscribe(data => {
+        if(!this.isNumber(data.lat) && !this.isNumber(data.lng)){
+          data.lat = Number(data.lat);
+          data.lng = Number(data.lng);
+        } 
         for(let marker of this.markers){
-          if(marker.lat === data.lat && marker.lng === data.lng ||
-             marker.lat === +data.lat && marker.lng === +data.lng){
+          if(marker.lat === data.lat && marker.lng === data.lng){
             const index = this.markers.indexOf(marker);
             this.markers.splice(index, 1);
           }

@@ -18,7 +18,7 @@
           
               <label class="label-modal">
                 <span class="label-descr">Latitude:</span>
-                <input type="text" class="form-control" formControlName="lat" placeholder="43.817699" required>
+                <input type="number" class="form-control" formControlName="lat" placeholder="43.817699" required>
               </label>
             
               <span 
@@ -28,7 +28,7 @@
               </span>
               <label class="label-modal">
                 <span class="label-descr">Longitude:</span>
-                <input type="text" class="form-control" formControlName="lng" placeholder="-79.188097" required>
+                <input type="number" class="form-control" formControlName="lng" placeholder="-79.188097" required>
               </label>
               
               <span 
@@ -54,7 +54,7 @@
           (click) = "onSubmit(addAssetForm.value, addAssetForm.valid) && sendNewTruck(addAssetForm.value)"
           data-dismiss="modal"
           [disabled]="addAssetForm.invalid">
-          Submit
+          Add
         </button>
     </div>
   </div>
