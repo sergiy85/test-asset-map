@@ -41,15 +41,15 @@ export class AgmMapComponent implements OnInit{
   ngOnInit() {
     // Create markers from the list of the trucks
     this.createMarkers();
-    // Get new truck from Add-Asset Component
-    this.addNewAsset();
+    // Get new truck from Add-Asset Component and assign it marker
+    this.addMarker();
     // set the marker according selected truck 
     this.setMarker();
       // remove marker 
     this.deleteMarker();
   }
 
-  // Check on number
+  // Check on number method
   public isNumber(value:any):boolean {
     return !Number.isNaN(Number(value))
   };
@@ -91,7 +91,7 @@ export class AgmMapComponent implements OnInit{
     return this.markers;
   }
 
-  public addNewAsset(){
+  public addMarker(){
     this.subscriptionAddAsset = this.share.getNewTruck()
       .subscribe(data => {
         if(!this.isNumber(data.lat) && !this.isNumber(data.lng)){
